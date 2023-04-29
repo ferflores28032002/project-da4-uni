@@ -2,22 +2,16 @@ import express from "express";
 import cors from 'cors'
 import { DATABASE, PORT } from "./config/EnvConfig.js";
 import sequelize from "./database/conexion.js";
-import routeVehiculo from './routes/vehiculo.route.js'
-import routeTipoVehiculo from './routes/tipoVehiculo.route.js'
-import routeModeloVehiculo from './routes/modelo.route.js'
-
+import apiRouter from './routes/index.js';
 
 const app = express()
-// Routes 
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
-// Routes y controllers
-app.use('/api', routeVehiculo)
-app.use('/api', routeTipoVehiculo)
-app.use('/api', routeModeloVehiculo)
-
+// setGlobalPrefix de la api
+app.use('/api', apiRouter)
 
 async function main() {
     try {

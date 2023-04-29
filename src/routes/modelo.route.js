@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { create, findAllModeloVehiculo } from "../controllers/modelo.controllers.js";
+import { create, findAllModeloVehiculo } from "../controllers/modelo.controller.js";
 
 
 const route = Router()

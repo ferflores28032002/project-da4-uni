@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { create, findAllTipoVehiculo } from "../controllers/tipoVehiculo.controllers.js";
+import { create, findAllTipoVehiculo } from "../controllers/tipoVehiculo.controller.js";
 
 
 const route = Router()

@@ -1,15 +1,17 @@
 import { Router } from "express";
-import { create, findAllVehiculo, findOneVehiculo, deleteVehiculo, update } from "../controllers/vehiculo.controllers.js";
+import { create, findAllVehiculo, findOneVehiculo, deleteVehiculo, update } from "../controllers/vehiculo.controller.js"
+import { validarCamposVehiculo } from "../validation/vehiculo.js";
 
 
 const route = Router()
 
-// Routes
+// Routes y validaciones correspondientes 
+
 route.get('/vehiculos', findAllVehiculo)
+route.post('/vehiculo',validarCamposVehiculo(), create);
 route.get('/vehiculo/:matricula', findOneVehiculo)
-route.delete('/vehiculo/:id', deleteVehiculo)
 route.put('/vehiculo/:id', update)
-route.post('/vehiculo', create)
+route.delete('/vehiculo/:id', deleteVehiculo)
 
 export default route
 

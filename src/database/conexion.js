@@ -1,8 +1,9 @@
 import { Sequelize } from "sequelize";
-import { DATABASE, PASSWORD, USER } from "../config/EnvConfig.js";
+import { DATABASE, DB_PORT, PASSWORD, USER } from "../config/EnvConfig.js";
 
 
 const sequelize = new Sequelize({
+    port: DB_PORT,
     database: DATABASE,
     username: USER,
     password: PASSWORD,

@@ -15,6 +15,12 @@ Este es una api rest de un sistema de supermercado
     .env
 ```
 
+# Descargar mysql-worbeanch
+
+```
+  En mi caso no utilice docker.
+```
+
 # Ejecute la aplicacion
 
 ```
