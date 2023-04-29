@@ -1,8 +1,10 @@
 import express from "express";
 import cors from 'cors'
-import { PORT } from "./config/EnvConfig.js";
+import { DATABASE, PORT } from "./config/EnvConfig.js";
 import sequelize from "./database/conexion.js";
-import routeUser from './routes/users.route.js'
+import routeVehiculo from './routes/vehiculo.route.js'
+import routeTipoVehiculo from './routes/tipoVehiculo.route.js'
+import routeModeloVehiculo from './routes/modelo.route.js'
 
 
 const app = express()
@@ -11,20 +13,23 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
-app.use('/api/v1', routeUser)
+// Routes y controllers
+app.use('/api', routeVehiculo)
+app.use('/api', routeTipoVehiculo)
+app.use('/api', routeModeloVehiculo)
 
 
 async function main() {
     try {
         await sequelize.authenticate()
-        await sequelize.sync()
-        console.log('Connect succefully a mysql')
+        await sequelize.sync({ force: false })
+        console.log('Conectado exitosamente a la base de datos --> ' + DATABASE)
     } catch (error) {
-        console.log(error.message)
+        console.log(error)
     }
 }
 
 main()
 
 
-app.listen(PORT, () => console.log(`Server on port ---> ${PORT}`))
+app.listen(PORT, () => console.log(`Sevidor en el puerto ---> ${PORT}`))

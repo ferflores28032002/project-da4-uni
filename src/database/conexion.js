@@ -6,7 +6,7 @@ const sequelize = new Sequelize({
     database: DATABASE,
     username: USER,
     password: PASSWORD,
-    dialect: 'mysql'
+    dialect: 'mysql',
 })
 
 export default sequelize
